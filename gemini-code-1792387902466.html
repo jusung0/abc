@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고생대의 환경과 생물 - 통합과학 발표</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f8fafc;
+      --surface: #ffffff;
+      --primary: #1e293b;
+      --brand-ocean: #0284c7;
+      --brand-rose: #e11d48;
+      --brand-amber: #d97706;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --border-light: #e2e8f0;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.7;
+      word-break: keep-all;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--brand-ocean);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--brand-ocean);
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0369a1 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2.5rem auto;
+      padding: 0 1.2rem;
+    }
+    section {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      scroll-margin-top: 5rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-num {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--brand-ocean);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .desc-box {
+      background: #f1f5f9;
+      border-left: 4px solid var(--brand-ocean);
+      padding: 1.2rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 1.5rem;
+    }
+    .desc-item {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .desc-item strong {
+      color: var(--primary);
+      display: inline-block;
+      min-width: 130px;
+    }
+    .interactive-stage {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    img.target-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 250px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .action-btn {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background: var(--brand-ocean);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    .action-btn:hover {
+      background: #0369a1;
+    }
+    .glacier-box {
+      width: 100%;
+      height: 120px;
+      background: #bae6fd;
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .glacier {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background: white;
+      opacity: 0.9;
+      transition: width 1s ease;
+    }
+    .glacier-info {
+      position: relative;
+      z-index: 2;
+      font-weight: 700;
+      color: #0369a1;
+    }
+    .cat-btn-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .cat-chip {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border-light);
+      background: white;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .cat-chip.active {
+      background: var(--brand-ocean);
+      color: white;
+    }
+    .creature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+    .creature-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+    .pangea-stage {
+      width: 100%;
+      height: 150px;
+      background: #e0f2fe;
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .continent {
+      width: 70px;
+      height: 50px;
+      background: #86efac;
+      border-radius: 35%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #166534;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    .c1 { top: 20px; left: 15%; }
+    .c2 { top: 80px; left: 45%; background: #bcdb9c; }
+    .c3 { top: 30px; left: 70%; }
+    
+    .pangea-stage.merged .c1 { top: 50px; left: 40%; transform: rotate(15deg); background: #a7f3d0; }
+    .pangea-stage.merged .c2 { top: 55px; left: 46%; transform: rotate(-10deg); background: #a7f3d0; }
+    .pangea-stage.merged .c3 { top: 45px; left: 53%; transform: rotate(45deg); background: #a7f3d0; }
+    .pangea-stage.merged .pangea-label { opacity: 1; transform: scale(1); }
+    
+    .pangea-label {
+      position: absolute;
+      bottom: 10px;
+      background: rgba(15, 23, 42, 0.8);
+      color: white;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.5s ease 0.8s;
+      z-index: 5;
+    }
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: #0f172a;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">PALEOZOIC</div>
+    <ul class="nav-links">
+      <li><a href="#section-era">시대 구분</a></li>
+      <li><a href="#section-climate">기후</a></li>
+      <li><a href="#section-atmosphere">대기·해양</a></li>
+      <li><a href="#section-continents">수륙 분포</a></li>
+      <li><a href="#section-creatures">대표 생물</a></li>
+      <li><a href="#section-extinction">대멸종</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <span class="header-badge">통합과학 발표 자료</span>
+    <h1>고생대의 환경과 생물</h1>
+    <p>약 5억 4천만 년 전 시작된 고생대 지구 환경 탐구</p>
+  </header>
+
+  <div class="container">
+
+    <!-- ① 시대 구분 -->
+    <section id="section-era">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2>시대 구분</h2>
+      </div>
+      <div class="desc-box">
+        <div class="desc-item"><strong>시작 및 종료 시기</strong>약 5억 4천만 년 전 ~ 약 2억 5천만 년 전</div>
+        <div class="desc-item"><strong>지질 시대 비중</strong>전체 지질 시대 중 약 6.3% 차지</div>
+        <div class="desc-item"><strong>구분 기준</strong>'캄브리아기 대폭발'로 단단한 껍질을 가진 삼엽충 등 화석 급증</div>
+      </div>
+      <div class="interactive-stage">
+        <p style="font-size:0.9rem; font-weight:bold; margin-bottom:0.8rem;">지질시대 연도표 및 비율</p>
+        <!-- 온라인 고화질 지질시대 연도표 연결 -->
+        <img src="https://nationalatlas.ngii.go.kr/imagedata/kor_2_2020/kor2_2020_38-1.jpg" alt="지질시대 연도표" class="target-img">
+      </div>
+    </section>
+
+    <!-- ② 기후 -->
+    <section id="section-climate">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2>기후 환경</h2>
+      </div>
+      <div class="desc-box">
+        <div class="desc-item"><strong>전반적 기후</strong>초기에는 매우 온난하고 얕은 바다가 발달함</div>
+        <div class="desc-item"><strong>빙하기</strong>고생대 동안 약 2회의 주요 빙하기 존재</div>
+      </div>
+      <div class="interactive-stage">
+        <div class="glacier-box">
+          <div class="glacier" id="glacierBar" style="width: 20%;"></div>
+          <div class="glacier-info" id="glacierText">온난한 간빙기</div>
+        </div>
+        <button class="action-btn" onclick="toggleGlacier()">빙하기 / 간빙기 전환</button>
+      </div>
+    </section>
+
+    <!-- ③ 대기·해양 -->
+    <section id="section-atmosphere">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2>대기 및 해양 환경</h2>
+      </div>
+      <div class="desc-box">
+        <div class="desc-item"><strong>산소 농도</strong>초기부터 상승하여 석탄기에는 현재보다 높은 수준 달성</div>
+        <div class="desc-item"><strong>이산화탄소</strong>광합성 생물 증가로 감소 및 변동</div>
+      </div>
+      <div class="interactive-stage">
+        <div class="cat-btn-group">
+          <button class="cat-chip active" onclick="showCategory('water-animal', this)">물속 동물</button>
+          <button class="cat-chip" onclick="showCategory('land-plant', this)">육상 식물</button>
+          <button class="cat-chip" onclick="showCategory('land-animal', this)">육상 동물</button>
+        </div>
+        <div id="ecoDisplay" style="padding:1rem; background:#f0f9ff; border-radius:8px; font-weight:bold; color:#0369a1;">
+          🦐 삼엽충, 완족류 등 해양 무척추동물 번성
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 수륙 분포 -->
+    <section id="section-continents">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2>수륙 분포 (판게아)</h2>
+      </div>
+      <div class="interactive-stage">
+        <div class="pangea-stage" id="pangeaStage">
+          <div class="continent c1">대륙 A</div>
+          <div class="continent c2">대륙 B</div>
+          <div class="continent c3">대륙 C</div>
+          <div class="pangea-label">초대륙 판게아(Pangea) 형성</div>
+        </div>
+        <button class="action-btn" onclick="togglePangea()">대륙 합치기 / 분리하기</button>
+      </div>
+    </section>
+
+    <!-- ⑤ 대표 생물 -->
+    <section id="section-creatures">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2>대표 생물</h2>
+      </div>
+      <div class="creature-grid">
+        <div class="creature-card">
+          <h3>삼엽충</h3>
+          <!-- 온라인 고생대 삼엽충 화석 이미지 연결 -->
+          <img src="https://www.sciencetimes.co.kr/jnrepo/uploads/2020/11/15_12_Postikaolishania_jingxiensis.jpg" alt="삼엽충" class="target-img">
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">머리, 가슴, 꼬리 구조와 탄산칼슘 외골격을 가짐.</p>
+        </div>
+        <div class="creature-card">
+          <h3>메가네우라</h3>
+          <!-- 온라인 고생대 메가네우라 이미지 연결 -->
+          <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ43LpazybRzLxYSEr5GcdxaTj9FWoLo0ixKYH8ie4nac-4vczWgEWKMnPznLMovslXMzwndFflIPvq7zg" alt="메가네우라" class="target-img">
+          <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">석탄기 높은 산소 농도로 인해 대형화된 잠자리형 곤충.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑥ 대멸종 -->
+    <section id="section-extinction">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2>페름기 대멸종</h2>
+      </div>
+      <div class="desc-box">
+        <div class="desc-item"><strong>원인 및 결과</strong>화산 폭발 및 판게아 형성 등으로 해양 생물종 95% 이상 멸종</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>통합과학 발표 프로젝트 — 3반 3모둠 (김상래, 김주성, 이동호, 최준혁)</p>
+  </footer>
+
+  <script>
+    let isGlacier = false;
+    function toggleGlacier() {
+      const bar = document.getElementById('glacierBar');
+      const text = document.getElementById('glacierText');
+      isGlacier = !isGlacier;
+      if (isGlacier) {
+        bar.style.width = '80%';
+        text.innerText = '한랭한 빙하기 (해수면 하강)';
+      } else {
+        bar.style.width = '20%';
+        text.innerText = '온난한 간빙기';
+      }
+    }
+
+    function showCategory(type, btn) {
+      document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const ecoDisplay = document.getElementById('ecoDisplay');
+      if(type === 'water-animal') ecoDisplay.innerText = '🦐 삼엽충, 완족류 등 해양 무척추동물 번성';
+      else if(type === 'land-plant') ecoDisplay.innerText = '🌲 석송류 등 거대 양치식물 삼림 형성';
+      else if(type === 'land-animal') ecoDisplay.innerText = '🦂 거대 곤충 및 초기 양서류 육상 진출';
+    }
+
+    function togglePangea() {
+      const stage = document.getElementById('pangeaStage');
+      stage.classList.toggle('merged');
+    }
+  </script>
+</body>
+</html>
